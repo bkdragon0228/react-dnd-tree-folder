@@ -1,8 +1,11 @@
 import React from "react";
 import "./App.css";
 
-import DndTreeFolder from "./lib/dndTreeFolder/index";
-import { TreeData } from "./lib/dndTreeFolder/types";
+// import { TreeData } from "./lib/dndTreeFolder/types";
+
+import { DndTreeFolder } from "react-dnd-tree-folder";
+
+import { TreeData } from "react-dnd-tree-folder/dist/dndTreeFolder/types";
 
 const treeData: TreeData = {
     children: [],
@@ -11,14 +14,12 @@ const treeData: TreeData = {
 };
 
 function App() {
-    const saveOnServer = (value: TreeData) => {
-        console.log("트리 데이터를 서버에 저장");
-    };
+    // const saveOnServer = (value: TreeData) => {
+    //     console.log("트리 데이터를 서버에 저장");
+    // };
     return (
         <div className="App">
-            <div style={{ width: "300px" }}>
-                <DndTreeFolder initialTreeData={treeData} onSave={saveOnServer} />
-            </div>
+            <DndTreeFolder initialTreeData={treeData} onSave={() => {}} />
         </div>
     );
 }
