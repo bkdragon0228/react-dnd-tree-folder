@@ -220,6 +220,7 @@ const DndTreeFolder = ({ initialTreeData, onSave, isEdit = true }: Props) => {
 
     const providerValue = {
         treeData,
+        isEdit,
         addTreeNode,
         deleteTreeNode,
         editTreeNodeName,
@@ -234,7 +235,7 @@ const DndTreeFolder = ({ initialTreeData, onSave, isEdit = true }: Props) => {
                 <TreeTitle onClick={toggleTools} depth={0} isOver={false}>
                     <i className="ri-folder-fill"></i>
                     {treeData.name}
-                    <TreeEditTools isOpen={isTools} id={treeData.id} />
+                    <TreeEditTools isOpen={isTools} id={treeData.id} isEdit={isEdit} />
                 </TreeTitle>
                 <div>
                     {treeData?.children?.map((subItem, index) => (
@@ -242,9 +243,11 @@ const DndTreeFolder = ({ initialTreeData, onSave, isEdit = true }: Props) => {
                     ))}
                 </div>
             </TreeContainer>
-            <SaveButton type="button" onClick={() => onSave(treeData)}>
-                저장
-            </SaveButton>
+            {isEdit && (
+                <SaveButton type="button" onClick={() => onSave(treeData)}>
+                    저장
+                </SaveButton>
+            )}
         </TreeProvider>
     );
 };

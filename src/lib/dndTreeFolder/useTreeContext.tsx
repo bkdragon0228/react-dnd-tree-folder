@@ -1,6 +1,7 @@
 import React from "react";
 
 export interface TreeContextProviderProps {
+    isEdit: boolean;
     treeData: any;
     addTreeNode: any;
     deleteTreeNode: any;

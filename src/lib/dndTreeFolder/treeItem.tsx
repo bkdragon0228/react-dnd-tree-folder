@@ -18,7 +18,7 @@ const TreeItem: React.FC<Props> = ({ item, depth = 1 }) => {
     const [isTools, setIsTools] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
     const [isOver, setIsOver] = useState(false); // 현재 노드 위에 아이템이 있는지
-    const { handleDragStart, handleDragEnd, handleDragEnter } = useTreeContext();
+    const { handleDragStart, handleDragEnd, handleDragEnter, isEdit } = useTreeContext();
     const icon = isOpen ? <i className="ri-arrow-down-line"></i> : <i className="ri-arrow-right-line"></i>;
 
     const toggleOpen = (e: any) => {
@@ -104,7 +104,7 @@ const TreeItem: React.FC<Props> = ({ item, depth = 1 }) => {
                 <TreeOpenIcon onClick={toggleOpen}>{item?.children.length > 0 ? icon : ""}</TreeOpenIcon>
                 {item?.children.length > 0 ? <i className="ri-folder-line"></i> : <i className="ri-file-line"></i>}
                 {item.name}
-                <TreeEditTools isOpen={isTools} id={item.id} />
+                <TreeEditTools isOpen={isTools} id={item.id} isEdit={isEdit} />
             </TreeTitle>
 
             {isOpen && (

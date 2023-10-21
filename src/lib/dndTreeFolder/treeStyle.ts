@@ -7,7 +7,6 @@ export const TreeContainer = styled.div`
     height: auto;
     min-height: 70vh;
     font-size: 14px;
-    border: 1px solid black;
 `;
 
 export const TreeItemContainer = styled.div`

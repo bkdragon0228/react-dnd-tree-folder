@@ -7,9 +7,10 @@ import { useTreeContext } from "./useTreeContext";
 interface Props {
     isOpen: boolean;
     id: string;
+    isEdit: boolean;
 }
 
-const TreeEditTools: React.FC<Props> = ({ isOpen, id }) => {
+const TreeEditTools: React.FC<Props> = ({ isOpen, id, isEdit }) => {
     const { treeData, addTreeNode, deleteTreeNode, editTreeNodeName } = useTreeContext();
     const [isOpenInput, setIsOpenInput] = useState(false);
     const [name, setName] = useState("");
@@ -17,6 +18,10 @@ const TreeEditTools: React.FC<Props> = ({ isOpen, id }) => {
     const openInput = () => {
         setIsOpenInput((prev) => !prev);
     };
+
+    if (!isEdit) {
+        return null;
+    }
 
     if (!isOpen) {
         return null;
